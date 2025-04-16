@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat de atención al cliente</title>
+  <style>
+    /* Fondo de la página */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      color: #ffffff;
+      flex-direction: column;
+    }
+
+    /* Fondo decorativo de tecnología */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Encabezado del menú */
+    #header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #ffffff;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    /* Logo y nombre de la constructora */
+    #logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #007bff;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    #company-name {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffffff;
+      margin-left: 10px;
+    }
+
+    /* Botones del menú */
+    #menu-buttons {
+      display: flex;
+      gap: 15px;
+    }
+    .menu-button {
+      font-size: 14px;
+      color: #ffffff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .menu-button:hover {
+      color: #e0e0e0;
+    }
+
+    /* Contenedor principal del chatbot */
+    #chat-container {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      margin-top: 80px;
+    }
+
+    /* Encabezado del chat */
+    #chat-header {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      background-color: #007bff;
+      color: white;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* Caja de chat */
+    #chatbox {
+      height: 450px;
+      padding: 15px;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Estilos de mensajes */
+    .message {
+      max-width: 75%;
+      padding: 10px 15px;
+      border-radius: 15px;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+    .user-message {
+      align-self: flex-end;
+      background-color: #007bff;
+      color: #ffffff;
+      border-top-right-radius: 0px;
+    }
+    .bot-message {
+      align-self: flex-start;
+      background-color: #f1f1f1;
+      color: #333;
+      border-top-left-radius: 0px;
+    }
+    .bot-buttons button {
+      margin: 5px;
+      padding: 8px 12px;
+      font-size: 14px;
+      border-radius: 10px;
+      border: none;
+      background-color: #007bff;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    /* Campo de entrada y botón */
+    #user-input-container {
+      display: flex;
+      border-top: 1px solid #e0e0e0;
+      background: #f9f9f9;
+    }
+    #user-input {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      outline: none;
+    }
+    #send-button {
+      background-color: #007bff;
+      border: none;
+      color: white;
+      padding: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    #send-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <!-- Encabezado del menú -->
+  <div id="header">
+    <div id="logo">C</div>
+    <div id="company-name">Constructora Dage</div>
+    <div id="menu-buttons">
+      <button class="menu-button">Objetivo</button>
+      <button class="menu-button">Código</button>
+      <button class="menu-button">Contáctanos</button>
+    </div>
+  </div>
+
+  <!-- Contenedor del chat -->
+  <div id="chat-container">
+    <div id="chat-header">Chat de atención al cliente</div>
+    <div id="chatbox"></div>
+
+    <div id="user-input-container">
+      <input type="text" id="user-input" placeholder="Escribe un mensaje..." 
+             onkeydown="if (event.key === 'Enter') sendMessage()" />
+      <button id="send-button" onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const userInput = document.getElementById("user-input").value.trim();
+      const chatbox = document.getElementById("chatbox");
+
+      if (userInput === "") return;
+
+      const userMessage = `<div class="message user-message"><strong>Tú:</strong> ${userInput}</div>`;
+      chatbox.innerHTML += userMessage;
+      document.getElementById("user-input").value = "";
+
+      // Enviar el mensaje al servidor Flask
+      fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userInput })
+      })
+      .then(response => response.json())
+      .then(data => {
+        renderBotResponse(data);
+        chatbox.scrollTop = chatbox.scrollHeight;
+      })
+      .catch(error => {
+        const errorMessage = `<div class="message bot-message"><strong>Bot:</strong> Error de conexión: ${error.message}</div>`;
+        chatbox.innerHTML += errorMessage;
+        console.error("Error:", error);
+      });
+    }
+
+    function renderBotResponse(data) {
+      const chatbox = document.getElementById("chatbox");
+      
+      // Verifica si la respuesta contiene botones
+      if (data.buttons) {
+        renderButtons(data);
+      } else {
+        // Renderiza solo el texto si no hay botones
+        const botMessage = `<div class="message bot-message"><strong>Bot:</strong> ${data.bot_response}</div>`;
+        chatbox.innerHTML += botMessage;
+      }
+    }
+
+    function renderButtons(data) {
+      const chatbox = document.getElementById("chatbox");
+      
+      // Muestra el texto del bot
+      const botMessage = `<div class="message bot-message"><strong>Bot:</strong> ${data.bot_response}</div>`;
+      chatbox.innerHTML += botMessage;
+
+      // Genera los botones
+      let buttonHtml = `<div class="bot-buttons">`;
+      data.buttons.forEach(button => {
+        buttonHtml += `<button onclick="sendPayload('${button.payload}')">${button.title}</button>`;
+      });
+      buttonHtml += `</div>`;
+      chatbox.innerHTML += buttonHtml;
+    }
+
+    function sendPayload(payload) {
+      // Envía el payload seleccionado al bot
+      fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: payload })
+      })
+      .then(response => response.json())
+      .then(data => {
+        renderBotResponse(data);
+        document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
+      })
+      .catch(error => {
+        const errorMessage = `<div class="message bot-message"><strong>Bot:</strong> Error de conexión: ${error.message}</div>`;
+        document.getElementById("chatbox").innerHTML += errorMessage;
+        console.error("Error:", error);
+      });
+    }
+  </script>
+</body>
+</html>

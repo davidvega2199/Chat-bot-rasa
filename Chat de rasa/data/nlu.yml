@@ -1,0 +1,175 @@
+version: "3.1"
+
+nlu:
+  - intent: saludar
+    examples: |
+      - hola
+      - ola
+      - buenos días
+      - qué tal
+      - cómo estás
+      - oe
+      - ole
+
+  - intent: despedirse
+    examples: |
+      - adiós
+      - hasta luego
+      - nos vemos
+      - chau
+      - bye
+
+  - intent: pedir_informacion
+    examples: |
+      - ¿qué puedes hacer?
+      - ¿qué servicios ofrecen?
+      - cuéntame sobre los servicios
+      - me gustaría saber más sobre tus servicios
+
+  - intent: pedir_ayuda
+    examples: |
+      - necesito ayuda
+      - ¿me puedes ayudar?
+      - necesito asistencia
+      - ¿puedes asistirme?
+
+  - intent: agradecer
+    examples: |
+      - gracias
+      - muchas gracias
+      - te lo agradezco
+      - qué amable
+
+  - intent: preguntar_estado
+    examples: |
+      - cómo estás
+      - como estas
+      - ¿cómo te encuentras?
+      - ¿qué tal estás?
+
+  - intent: responder_bien
+    examples: |
+      - bien y tú
+      - bien, ¿y tú cómo estás?
+      - estoy bien y tú
+
+  - intent: responder_mal
+    examples: |
+      - mal
+      - mal y tú
+      - mal, ¿y tú cómo estás?
+      - estoy mal y tú
+
+  - intent: consultar_proyectos
+    examples: |
+      - ¿Qué proyectos nuevos tienen?
+      - cuéntame sobre los proyectos disponibles
+      - ¿hay proyectos nuevos?
+
+  - intent: consultar_precios
+    examples: |
+      - ¿Cuáles son los precios de los proyectos?
+      - ¿cuánto cuesta el proyecto?
+      - dame información sobre los precios
+
+  - intent: radicar_pqrs
+    examples: |
+      - quiero radicar una PQRS
+      - quiero poner una queja
+      - quiero colocar una solicitud
+      - quiero poner una petición
+      - quiero radicar una solicitud
+      - quiero radicar un reclamo
+      - ¿cómo puedo radicar una PQRS?
+      - necesito hacer una queja
+
+  - intent: consultar_horarios
+    examples: |
+      - ¿Cuál es el horario de atención?
+      - ¿a qué horas están abiertos?
+      - que horarios tienen
+      - dame los horarios de atención
+
+  - intent: preguntar_mantenimiento
+    examples: |
+      - ¿Por qué no aparecen mis pagos?
+      - Mis pagos no están en la plataforma.
+      - No veo los pagos en mi cuenta.
+
+  - intent: preguntar_entregas
+    examples: |
+      - ¿Cuándo son las entregas del proyecto?
+      - ¿Me puedes decir cuándo entregan el proyecto?
+      - Quiero saber las fechas de entrega.
+
+  - intent: solicitar_llamada
+    examples: |
+      - Quiero ser atendido por llamada.
+      - Necesito que me llamen.
+      - Quiero que me den información por teléfono.
+
+  - intent: solicitar_estado_cuenta
+    examples: |
+      - Quiero un estado de cuenta.
+      - Necesito mi estado de cuenta.
+      - ¿Cómo solicito un estado de cuenta?
+
+  - intent: visitar_obra
+    examples: |
+      - Quiero visitar la obra.
+      - Me gustaría hacer una visita a la obra.
+      - ¿Puedo ir a ver la obra?
+
+
+  - intent: consultar_informacion_general
+    examples: |
+      - Quiero información general sobre la constructora
+      - Cuéntame más sobre ustedes
+      - ¿Pueden darme información general?
+      - ¿Qué información general tienen?
+
+  - intent: consultar_legalizacion
+    examples: |
+          - ¿Cómo es el proceso de legalización?
+          - Quiero saber sobre el proceso de legalización
+          - ¿Qué pasos hay en la legalización?
+          - Explícame el proceso de legalización
+          - ¿Cuánto dura la legalización de mi propiedad?
+          - Cuéntame sobre el proceso de legalización de trámites
+
+  - intent: consultar_escrituracion_entrega
+    examples: |
+      - ¿Cómo es el proceso de escrituración y entrega?
+      - Necesito detalles sobre la escrituración
+      - ¿Cuándo se hace la entrega?
+      - Cuéntame sobre la escrituración y entrega
+
+  - intent: consultar_cartera_aprobados
+    examples: |
+      - Quiero saber sobre cartera y aprobados
+      - ¿Cómo es el proceso de aprobación?
+      - Necesito información sobre mi cartera
+      - Cuéntame sobre los aprobados y cartera
+
+  - intent: consultar_ventas_proyectos_nuevos
+    examples: |
+      - ¿Qué proyectos nuevos están a la venta?
+      - Cuéntame sobre los proyectos nuevos en venta
+      - ¿Tienen nuevos proyectos para vender?
+      - Necesito información de los proyectos nuevos
+
+  - intent: consultar_inmobiliaria_arriendos
+    examples: |
+      - ¿Qué opciones de arriendo tienen?
+      - Cuéntame sobre los arriendos
+      - ¿Tienen propiedades en arriendo?
+      - Necesito información de los arriendos disponibles
+
+  - intent: preguntar_creador
+    examples: |
+      - ¿Quién te creó?
+      - ¿Quién es tu creador?
+      - ¿Quién desarrolló este bot?
+      - ¿Quién hizo este chatbot?
+      - ¿Quién programó este bot?
+      - Quisiera saber quién te creó

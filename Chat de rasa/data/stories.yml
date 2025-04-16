@@ -1,0 +1,117 @@
+version: "3.1"
+
+stories:
+  - story: saludo y menú de opciones
+    steps:
+      - intent: saludar
+      - action: utter_saludo
+      - action: utter_menu
+
+  - story: respuesta a información general
+    steps:
+      - intent: consultar_informacion_general
+      - action: utter_informacion_general
+
+  - story: respuesta a legalización
+    steps:
+      - intent: consultar_legalizacion
+      - action: utter_proceso_legalizacion
+
+  - story: respuesta a escrituración y entrega
+    steps:
+      - intent: consultar_escrituracion_entrega
+      - action: utter_escrituracion_entrega
+
+  - story: respuesta a cartera y aprobados
+    steps:
+      - intent: consultar_cartera_aprobados
+      - action: utter_cartera_aprobados
+
+  - story: respuesta a ventas de proyectos nuevos
+    steps:
+      - intent: consultar_ventas_proyectos_nuevos
+      - action: utter_ventas_proyectos_nuevos
+
+  - story: respuesta a inmobiliaria arriendos
+    steps:
+      - intent: consultar_inmobiliaria_arriendos
+      - action: utter_inmobiliaria_arriendos
+
+  - story: saludo y respuesta de estado con menú
+    steps:
+      - intent: saludar
+      - action: utter_saludo
+      - action: utter_menu
+      - intent: preguntar_estado
+      - action: utter_preguntar_estado
+      - intent: responder_bien
+      - action: utter_responder_bien
+      - intent: responder_mal
+      - action: utter_responder_mal
+
+  - story: pedir información
+    steps:
+      - intent: pedir_informacion
+      - action: utter_informacion
+
+  - story: pedir ayuda
+    steps:
+      - intent: pedir_ayuda
+      - action: utter_ayuda
+
+  - story: agradecer
+    steps:
+      - intent: agradecer
+      - action: utter_agradecimiento
+
+  - story: despedida
+    steps:
+      - intent: despedirse
+      - action: utter_despedida
+
+  - story: consultar proyectos y precios
+    steps:
+      - intent: consultar_proyectos
+      - action: utter_preguntar_proyectos
+      - intent: consultar_precios
+      - action: utter_preguntar_precios
+
+  - story: radicar PQRS
+    steps:
+      - intent: radicar_pqrs
+      - action: utter_radicar_pqrs
+
+  - story: consultar horarios
+    steps:
+      - intent: consultar_horarios
+      - action: utter_consultar_horarios
+  
+  - story: preguntar sobre mantenimiento
+    steps:
+      - intent: preguntar_mantenimiento
+      - action: utter_mantenimiento
+
+  - story: preguntar sobre entregas
+    steps:
+      - intent: preguntar_entregas
+      - action: utter_entregas
+
+  - story: solicitar llamada
+    steps:
+      - intent: solicitar_llamada
+      - action: utter_solicitar_numero
+
+  - story: solicitar estado de cuenta
+    steps:
+      - intent: solicitar_estado_cuenta
+      - action: utter_estado_cuenta
+
+  - story: visitar obra
+    steps:
+      - intent: visitar_obra
+      - action: utter_visitar_obra
+
+  - story: consulta de proceso de legalización
+    steps:
+      - intent: consultar_legalizacion
+      - action: utter_proceso_legalizacion

@@ -1,0 +1,134 @@
+version: "3.1"
+
+rules:
+  - rule: regla para saludo y mostrar menú
+    steps:
+      - intent: saludar
+      - action: utter_saludo
+      - action: utter_menu
+
+  - rule: regla para despedida
+    steps:
+      - intent: despedirse
+      - action: utter_despedida
+
+  - rule: regla para pedir informacion
+    steps:
+      - intent: pedir_informacion
+      - action: utter_informacion
+
+  - rule: regla para pedir ayuda
+    steps:
+      - intent: pedir_ayuda
+      - action: utter_ayuda
+
+  - rule: regla para preguntar cómo estás
+    steps:
+      - intent: preguntar_estado
+      - action: utter_preguntar_estado
+
+  - rule: regla para responder bien
+    steps:
+      - intent: responder_bien
+      - action: utter_responder_bien
+
+  - rule: regla para responder mal
+    steps:
+      - intent: responder_mal
+      - action: utter_responder_mal
+
+  - rule: regla para consultar proyectos
+    steps:
+      - intent: consultar_proyectos
+      - action: utter_preguntar_proyectos
+
+  - rule: regla para consultar precios
+    steps:
+      - intent: consultar_precios
+      - action: utter_preguntar_precios
+
+  - rule: regla para radicar pqrs
+    steps:
+      - intent: radicar_pqrs
+      - action: utter_radicar_pqrs
+
+  - rule: regla para consultar horarios
+    steps:
+      - intent: consultar_horarios
+      - action: utter_consultar_horarios
+
+  - rule: regla para mantenimiento
+    steps:
+      - intent: preguntar_mantenimiento
+      - action: utter_mantenimiento
+
+  - rule: regla para entregas
+    steps:
+      - intent: preguntar_entregas
+      - action: utter_entregas
+
+  - rule: regla para llamada
+    steps:
+      - intent: solicitar_llamada
+      - action: utter_solicitar_numero
+
+  - rule: regla para estado de cuenta
+    steps:
+      - intent: solicitar_estado_cuenta
+      - action: utter_estado_cuenta
+
+  - rule: regla para visita a obra
+    steps:
+      - intent: visitar_obra
+      - action: utter_visitar_obra
+
+  # Reglas específicas para cada opción del menú
+
+  - rule: regla para consultar información general
+    steps:
+      - intent: consultar_informacion_general
+      - action: utter_informacion_general
+
+  - rule: regla para consultar legalización
+    steps:
+      - intent: consultar_legalizacion
+      - action: utter_proceso_legalizacion
+
+  - rule: regla para consultar escrituración y entrega
+    steps:
+      - intent: consultar_escrituracion_entrega
+      - action: utter_escrituracion_entrega
+
+  - rule: regla para consultar cartera y aprobados
+    steps:
+      - intent: consultar_cartera_aprobados
+      - action: utter_cartera_aprobados
+
+  - rule: regla para consultar ventas de proyectos nuevos
+    steps:
+      - intent: consultar_ventas_proyectos_nuevos
+      - action: utter_ventas_proyectos_nuevos
+
+  - rule: regla para consultar inmobiliaria arriendos
+    steps:
+      - intent: consultar_inmobiliaria_arriendos
+      - action: utter_inmobiliaria_arriendos
+
+  - rule: responder sobre el creador
+    steps:
+      - intent: preguntar_creador
+      - action: utter_creador
+  
+  - rule: fallback para crear PQRS
+    steps:
+      - action: action_default_fallback
+      - action: utter_fallback_pqrs
+      - slot_was_set:
+          - nombre_usuario: null
+      - action: utter_solicitar_correo
+      - slot_was_set:
+          - correo_usuario: null
+      - action: utter_solicitar_descripcion
+      - slot_was_set:
+          - descripcion_caso: null
+      - action: utter_confirmacion_pqrs

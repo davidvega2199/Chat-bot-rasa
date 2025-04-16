@@ -1,0 +1,156 @@
+version: "3.1"
+
+intents:
+  - saludar
+  - despedirse
+  - pedir_informacion
+  - pedir_ayuda
+  - agradecer
+  - preguntar_estado
+  - responder_bien
+  - responder_mal
+  - consultar_proyectos
+  - consultar_precios
+  - radicar_pqrs
+  - consultar_horarios
+  - consultar_informacion_general
+  - consultar_legalizacion
+  - consultar_escrituracion_entrega
+  - consultar_cartera_aprobados
+  - consultar_ventas_proyectos_nuevos
+  - consultar_inmobiliaria_arriendos
+  - preguntar_creador
+
+entities:
+  - tipo_servicio
+
+slots:
+  tipo_servicio:
+    type: text
+    mappings:
+      - type: from_text
+  nombre_usuario:
+    type: text
+    mappings:
+      - type: from_text
+  correo_usuario:
+    type: text
+    mappings:
+      - type: from_text
+  descripcion_caso:
+    type: text
+    mappings:
+      - type: from_text
+
+responses:
+  utter_saludo:
+    - text: "¡Hola soy el bot de la constructora Grupo Inmobiliario Dage! ¿Cómo te encuentras hoy?"
+
+  utter_despedida:
+    - text: "¡Adiós! Espero que tengas un buen día."
+
+  utter_informacion:
+    - text: "Puedo proporcionarte información sobre nuestros servicios. ¿Qué te gustaría saber?"
+
+  utter_ayuda:
+    - text: "Estoy aquí para asistirte. ¿En qué necesitas ayuda?"
+
+  utter_agradecimiento:
+    - text: "¡Gracias a ti! Siempre estoy aquí para lo que necesites."
+
+  utter_preguntar_estado:
+    - text: "¿Cómo estás?"
+
+  utter_responder_bien:
+    - text: "¡Me alegra que estés bien! Yo estoy aquí listo para ayudarte."
+
+  utter_responder_mal:
+    - text: "Lamento que no te sientas bien. Estoy aquí para ayudarte en lo que necesites."
+
+  utter_preguntar_proyectos:
+    - text: "Actualmente contamos con los siguientes proyectos: [Proyecto A, Proyecto B]. ¿Te gustaría conocer más detalles?"
+
+  utter_preguntar_precios:
+    - text: "Los precios de los proyectos varían. Por ejemplo, el Proyecto A comienza en $100.000.000, mientras que el Proyecto B empieza en $150.000.000."
+
+  utter_radicar_pqrs:
+    - text: "Puedes radicar tu PQRS proporcionando los detalles de tu solicitud. Estoy aquí para ayudarte con eso."
+      buttons:
+        - title: "Radicar PQRS"
+          payload: "/radicar_pqrs"
+          url: "https://Dage.com.co/pqrs"
+
+  utter_consultar_horarios:
+    - text: "Nuestro horario de atención presencial es de lunes a viernes, de 8:00 a.m. a 5:00 p.m."
+
+  utter_mantenimiento:
+    - text: "Si los pagos no aparecen en la plataforma, es porque está en mantenimiento. Por favor, intenta más tarde."
+
+  utter_entregas:
+    - text: "Te avisaremos cuando llegue el momento de las entregas del proyecto."
+
+  utter_solicitar_numero:
+    - text: "Para atenderte por llamada telefónica, por favor indícame tu número telefónico."
+
+  utter_estado_cuenta:
+    - text: "Puedes solicitar tu estado de cuenta a través del correo: carteradavid@Dacrimaja.com."
+
+  utter_visitar_obra:
+    - text: "Por favor, indícame el día y la hora en que deseas visitar la obra, y pronto te llamaremos para confirmar si se puede en esa fecha."
+
+  utter_menu:
+    - text: "¿En qué proceso deseas recibir ayuda?"
+      buttons:
+        - title: "1. Información General"
+          payload: "/consultar_informacion_general"
+        - title: "2. Legalización"
+          payload: "/consultar_legalizacion"
+        - title: "3. Escrituración y Entrega"
+          payload: "/consultar_escrituracion_entrega"
+        - title: "4. Cartera y Aprobados"
+          payload: "/consultar_cartera_aprobados"
+        - title: "5. Ventas Proyectos Nuevos"
+          payload: "/consultar_ventas_proyectos_nuevos"
+        - title: "6. Inmobiliaria Arriendos"
+          payload: "/consultar_inmobiliaria_arriendos"
+
+  utter_informacion_general:
+    - text: "Esta es la información general de nuestra empresa y los servicios que ofrecemos..."
+
+  utter_inmobiliaria_arriendos:
+    - text: "Para servicios de arriendo, puedes consultar las opciones disponibles aquí. Contáctanos para más información."
+  
+  utter_cartera_aprobados:
+    - text: "En la sección de cartera y aprobados, puedes revisar el estado de tus pagos y el proceso de aprobación de crédito. ¿Te gustaría más información sobre algún aspecto en particular?"
+
+  utter_ventas_proyectos_nuevos:
+    - text: "Actualmente, tenemos varios proyectos nuevos en venta. ¿Te gustaría más información sobre alguno en particular?"
+
+  utter_escrituracion_entrega:
+    - text: "El proceso de escrituración y entrega incluye los pasos finales de firma y entrega del inmueble. La notaría notificará cuando la minuta esté lista. Los gastos notariales deberán ser asumidos por el cliente en el momento de la firma. ¿Te gustaría saber más sobre este proceso?"
+  
+  utter_proceso_legalizacion:
+    - text: |
+        El proceso de legalización de trámites previos a la escrituración tiene una duración máxima de 1 mes y consta de los siguientes pasos:
+        1. **Documentos Iniciales**: Envío de certificado de libertad y tradición, pago de avalúo y honorarios (en el caso de pago con crédito).
+        2. **Firma de Documentos**: Firma electrónica de documentos como la carta de afectación a vivienda familiar, otrosí de cambio de datos, y otrosí de modificación de forma de pago.
+        3. **Trámite con el Banco**: La constructora envía los documentos al abogado del banco para el estudio de títulos y avalúos, y el abogado elabora la escritura.
+        4. **Firma de Escritura**: La notaría notificará la minuta lista para firmar. Los gastos notariales serán asumidos por el cliente.
+        5. **Documentos Finales y Desembolso**: Firma de acta de entrega del inmueble y autorización de giro para el desembolso de crédito.
+        Para más detalles, consulta con nuestro equipo de atención al cliente.
+
+  utter_creador:
+    - text: "Fui creado por el Ingeniero David Vega Días. Puedes contactarlo al número 3118493055 o al correo jesusdavidvdia@ufps.edu.co."
+
+  utter_fallback_pqrs:
+    - text: "Parece que no entendí tu solicitud. Para ayudarte mejor, ¿te gustaría crear un PQRS? Por favor, proporcióname tu nombre."
+  utter_solicitar_correo:
+    - text: "¿Podrías proporcionarme tu correo electrónico para contactarte?"
+  utter_solicitar_descripcion:
+    - text: "Por último, por favor describe brevemente tu caso o solicitud."
+  utter_confirmacion_pqrs:
+    - text: "Gracias, he registrado tu PQRS. Nos pondremos en contacto contigo pronto."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
